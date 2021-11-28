@@ -52,7 +52,7 @@ Se obtiene la siguiente salida:
 
 ```txt
 --------------------------------------------------
-* Vecinos seleccionados:  1 2 3
+* Vecinos seleccionados:  1 2
 --------------------------------------------------
 ```
 
@@ -74,4 +74,27 @@ Se obtiene la siguiente salida:
 ```
 
 #
+
+### Descripción del código
+
+En este proyecto, se tienen una serie de ficheros, cada uno contiene clases y métodos necesarios para el correcto funcionamiento del mismo. El objetivo de este apartado es dar una breve explicación a cada uno de ellos:
+
+* Código principal
+
+En el fichero del programa principal hay dos clases, ``public class Recommendation`` y la ``class Pair``.
+
+La primera contiene los siguientes métodos:
+
+- ``public static List<int[]> readMatrix(String filename)``. Este método lee el fichero pasado como parámetro y lo convierte en una lista de enteros para su posterior manejo, además, sustituye los guiones ("-") de la matriz por un -1. También tiene un código try-catch para la gestión de errores.
+
+- ``public static double predictRating(List<int[]> ratings, SimMeasure distance, int k, Prediction predType, int userindex, int itemindex)``.
+Su objetivo es imprimir el resultado de la posible valoración que un usuario va a tener sobre un item concreto a través de las similitudes calculadas. Dependiendo de la métrica que se haya escogido se podrán obtener ditintos valores, así como a la hora del cálculo del tipo de predicción. 
+
+- ``public static List<double[]> collaborativeFilter(List<int[]> ratings, SimMeasure distance, int k, Prediction predType)``.
+Devuelve una lista de doubles con la matriz resultante con la predicción de los elementos faltantes en la matriz original.
+
+- ``public static void main(String[] args)``. Es el main de la clase, recibe el vector de strings de los argumentos y tiene los recursos para analizar si estos son correctos o no, en tal caso enviará un mensaje de error. Además, tiene dos switch que hacen llamada a su correspondiente métrica y método de predicción.
+
+
+Finalmente, la clase ```Pair``, permite almacenar el valor y el índice. Imprescindible para poder seleccionar las similitudes más altas de los vecinos.
 
