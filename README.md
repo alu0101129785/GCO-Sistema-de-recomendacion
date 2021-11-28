@@ -106,3 +106,29 @@ Este fichero contiene la clase abstracta ``public abstract class SimMeasure`` ad
 - ``public abstract double measure(int[] u, int[] v)``. Método provisto de la clase padre para que más adelante, las subclases puedan realizar una implementación específica del mismo.
 - ``public List<Integer> getSuv(int[] u, int[] v)``. Es una operación concurrente en las métricas de Pearson y la Distancia Coseno. Con este método se pretende obtener Suv, que es el conjunto de ítems calificados por u y v, siendo estos dos usuarios.
 
+* Pearson.java
+
+Este fichero contiene la ``public class Pearson extends SimMeasure``. Como indica la palabra reservada **extends**, es una clase hija de SimMeasure y hereda los métodos de la misma.
+
+- ``public static double meanWithNan(int[] v, List<Integer> Suv)``. Realiza una media y lo devuelve como un double.
+- ``public double measure(int[] u, int[] v)``. Realiza el cálculo de la similitud usando la fórmula de la Correlación de Pearson.
+
+![Fórmula Pearson](./img/SimPearson.PNG)
+
+* CosineDistance.java
+
+Este fichero contiene la ``public class CosineDistance extends SimMeasure``, otra de las clases hijas de SimMeasure y tiene un único método:
+- ``public double measure(int[] u, int[] v)``. Este método realiza el cálculo de la similitud empleando la fórmula de la Distancia Coseno.
+
+![Fórmula Distancia Coseno](./img/SimCoseno.PNG)
+
+* EuclideanDistance.java
+
+Este fichero contiene la ``public class EuclideanDistance extends SimMeasure``, también es una clase hija de SimMeasure y tiene un único método:
+- ``public double measure(int[] u, int[] v)``. Este método realiza el cálculo de la similitud empleando la fórmula de la Distancia Euclídea.
+
+![Fórmula Distancia Euclídea](./img/SimEuclidea.PNG)
+
+#
+
+
