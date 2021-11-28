@@ -16,7 +16,7 @@ public class Recommendation {
     
     try {
       // Leemos el contenido del fichero
-      System.out.println("... Leemos el contenido del fichero ...");
+      System.out.println("Leyendo el contenido del fichero ...");
       s = new Scanner(matriz_entrada);
 
       // Leemos linea a linea el fichero
@@ -49,15 +49,20 @@ public class Recommendation {
   
   public static double predictRating(List<int[]> ratings, SimMeasure distance, int k, Prediction predType, int userindex, int itemindex) {
     List<Pair> distancias = new ArrayList<>();
+    System.out.println("\n--------------------------------------------------");
+    System.out.println("* Similaridad entre usuarios: ");
     for(int i = 0; i < ratings.size(); i++) {
       if(i != userindex) {
         double aux = distance.measure(ratings.get(userindex), ratings.get(i));
         distancias.add(new Pair(i, aux));
-        System.out.println("distancia user " + userindex + " con usuario " + i + ": " + aux);
+        System.out.println(" > Similitud del usuario " + userindex + " con el usuario " + i + ": " + aux);
       }
     }
+    System.out.println("--------------------------------------------------\n");
     double p = predType.predict(distancias, ratings, itemindex, k, userindex);
-    System.out.println("Usuario: " + userindex + " item: " + itemindex + " valoración predicha: " + p);
+    System.out.println("--------------------------------------------------");
+    System.out.println("* Usuario: " + userindex + " item: " + itemindex + " --> valoración estimada: " + p);
+    System.out.println("--------------------------------------------------\n");
     return p; 
   }
   
@@ -75,6 +80,7 @@ public class Recommendation {
       }
       result.add(copy);
     }
+    System.out.println("* Matriz de utilidad: \n");
     return result;
   }
   

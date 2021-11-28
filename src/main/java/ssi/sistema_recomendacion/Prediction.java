@@ -26,11 +26,12 @@ public abstract class Prediction {
       nku.add(simList.get(maxindex));
       simList.remove(maxindex);
     }
-    System.out.print("Vecinos seleccionados: ");
+    System.out.println("--------------------------------------------------");
+    System.out.print("* Vecinos seleccionados: ");
     for (Pair pair : nku) {
       System.out.print(" " + pair.index);
     }
-    System.out.println("");
+    System.out.println("\n--------------------------------------------------");
     return nku;
   } 
 }
