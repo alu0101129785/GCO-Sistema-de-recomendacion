@@ -8,7 +8,7 @@ Descargar el proyecto y probar su ejecución desde el IDE Netbeans siguiendo las
 
 Se requiere para el funcoinamiento del mismo 4 parámetros por línea de comandos:
 * Fichero con la matriz original.
-* Métrica elegida para las similitudes, a elegir entre Pearson (1), Distancia Coseno (2), Distancia Euclídea (3).
+* Métrica elegida para las similitudes, a elegir entre Correlación de Pearson (1), Distancia Coseno (2), Distancia Euclídea (3).
 * Número de vecinos a tener en cuenta. Se precisa un número mayor o igual a 3 para que los resultados sean significantes.
 * Tipo de predicción, a elegir entre Predicción simple (1) y Diferencia con la media (2).
 
@@ -81,7 +81,7 @@ En este proyecto, se tienen una serie de ficheros, cada uno contiene clases y m�
 
 * Código principal
 
-En el fichero del programa principal hay dos clases, ``public class Recommendation`` y la ``class Pair``.
+En el fichero del programa principal, ``Recommendation.java`` hay dos clases, ``public class Recommendation`` y la ``class Pair``.
 
 La primera contiene los siguientes métodos:
 
@@ -96,5 +96,13 @@ Devuelve una lista de doubles con la matriz resultante con la predicción de los
 - ``public static void main(String[] args)``. Es el main de la clase, recibe el vector de strings de los argumentos y tiene los recursos para analizar si estos son correctos o no, en tal caso enviará un mensaje de error. Además, tiene dos switch que hacen llamada a su correspondiente métrica y método de predicción.
 
 
-Finalmente, la clase ```Pair``, permite almacenar el valor y el índice. Imprescindible para poder seleccionar las similitudes más altas de los vecinos.
+Finalmente, la clase ``Pair``, permite almacenar el _valor_ y el _índice_. Imprescindible para poder seleccionar las similitudes más altas de los vecinos.
+#
+
+* SimMeasure.java
+
+Este fichero contiene la clase abstracta ``public abstract class SimMeasure`` además de dos métodos:
+
+- ``public abstract double measure(int[] u, int[] v)``. Método provisto de la clase padre para que más adelante, las subclases puedan realizar una implementación específica del mismo.
+- ``public List<Integer> getSuv(int[] u, int[] v)``. Es una operación concurrente en las métricas de Pearson y la Distancia Coseno. Con este método se pretende obtener Suv, que es el conjunto de ítems calificados por u y v, siendo estos dos usuarios.
 
