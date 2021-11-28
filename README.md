@@ -1,5 +1,7 @@
 # Gestión del Conocimiento en las Organizaciones
 ## Práctica 4. Sistema de Recomendación
+
+* Autor: Saúl Pérez García
 #
 
 ### Ejemplo de uso:
@@ -131,4 +133,29 @@ Este fichero contiene la ``public class EuclideanDistance extends SimMeasure``, 
 
 #
 
+* Prediction.java
 
+Este fichero contiene la clase ``public abstract class Prediction`` con los siguientes métodos.
+
+``public abstract double predict(List<Pair> sim, List<int[]> r, int i, int k, int u)``. Método provisto de la clase padre para que más adelante, las subclases puedan realizar una implementación específica del mismo.
+``public List<Pair> nku(List<Pair> sim, int k)``. Este método nos permite obtener una lista de pares que vamos a denominar **nku**, se trata del conjunto de los k vecinos más próximos de u en términos de la función de similitud sim(u, v).
+
+
+* SimplePrediction.java
+
+Este fichero tiene la clase ``public class SimplePrediction extends Prediction``, una clase hija de Prediction que tiene un método heredado de esta aunque con una implementación acorde con lo quese quiere lograr al llamarlo.
+
+- ``public double predict(List<Pair> sim, List<int[]> r, int i, int k, int u)``. Este método realiza un cálculo para predecir el valor que obtendrá un determinado item i, cuando un usuario u, lo valore siguiendo la siguiente fórmula:
+
+
+![Fórmula Predicción Simple](./img/PredSimple.PNG)
+
+
+* MeanDifference.java
+
+Este fichero tiene la clase ``public class MeanDifference extends Prediction``, una clase hija de Prediction que tiene un método propio para calcular la media y otro heredado de la clase padre aunque con una implementación acorde con lo quese quiere lograr al llamarlo.
+
+- ``public static double meanWithNan(int[] v)``. Este método realiza la media de las valoraciones para cada item iésimo pero ignorando aquellos donde su valor fue cambiado a -1, puesto que esto significa que aún no han sido valorados. Para ello se hace un contador, que aumenta cada vez que el valor estudiado no es un -1. Finalmente, la división para la media se realiza con el valor del contador como denominador.
+- ``public double predict(List<Pair> sim, List<int[]> r, int i, int k, int u)``. Este método realiza un cálculo para predecir el valor que obtendrá un determinado item i, cuando un usuario u, lo valore siguiendo la siguiente fórmula:
+
+![Fórmula Diferencia con la media](./img/DiffMedia.PNG)
