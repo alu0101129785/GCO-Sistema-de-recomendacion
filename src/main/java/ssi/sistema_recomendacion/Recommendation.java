@@ -16,7 +16,7 @@ public class Recommendation {
     
     try {
       // Leemos el contenido del fichero
-      System.out.println("Leyendo el contenido del fichero ...");
+      //System.out.println("\nLeyendo el contenido del fichero ...\n");
       s = new Scanner(matriz_entrada);
 
       // Leemos linea a linea el fichero
@@ -96,19 +96,24 @@ public class Recommendation {
     */
     int metric = Integer.parseInt(args[1]);
     if (metric < 1 || metric > 3) {
-      System.out.println("Métrica no válida");
+      System.out.println("Métrica no válida. Posibles opciones: ");
+      System.out.print("1. Correlación de Pearson\n");
+      System.out.print("2. Distancia Coseno\n");
+      System.out.print("3. Distancia Euclídea\n");
       System.exit(1);
     }
     
     int nbs = Integer.parseInt(args[2]);
-    if (nbs < 2 || nbs > userRatings.size() - 1) {
-      System.out.println("Número de vecinos no válido");
+    if (nbs < 3 || nbs > userRatings.size() - 1) {
+      System.out.println("Número de vecinos no válido. Se espera un valor igual o mayor a 3");
       System.exit(1);
     }
     
     int pred = Integer.parseInt(args[3]);
     if (pred < 1 || pred > 2) {
-      System.out.println("Predicción no válida");
+      System.out.println("Predicción no válida. Las opciones disponibles son: ");
+      System.out.print("1. Predicción Simple\n");
+      System.out.print("2. Diferencia con la media\n");
       System.exit(1);
     }
     

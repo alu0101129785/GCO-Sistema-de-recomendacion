@@ -23,5 +23,5 @@ public class CosineDistance extends SimMeasure {
     double den = sqrt(sumDen1) * sqrt(sumDen2);
     return sumNum/den;
   }
-  
+ 
 }
